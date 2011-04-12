@@ -41,8 +41,9 @@ class User < ActiveRecord::Base
 	private
 	
 		def encrypt_password
+		   self.email=self.email.downcase
 			self.salt=make_salt if new_record?
-	 		self.encrypted_password=encrypt(password)
+	 		self.encrypted_password=encrypt(password) 		
 	   end
 	   
 	   def encrypt(string)	
