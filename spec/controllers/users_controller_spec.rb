@@ -135,7 +135,16 @@ describe UsersController do
     it "should have a password confirmation field" do
     	get :new
     	response.should have_selector("input[name='user[password_confirmation]'][type='password']")    	
-    end        
+    end   
+    
+    describe "for signed_in user" do
+    	it "should not allow access to the new page" do
+    		@user=@user=Factory(:user)
+    		test_sign_in(@user)
+    		get :new
+    		response.should redirect_to root_path
+      end
+    end  
   end
 
   describe "POST 'create'" do
@@ -158,7 +167,14 @@ describe UsersController do
 		 it "should render the 'new' page" do
 		 	post :create, :user=>@attr
 		 	response.should render_template('new')
-		 end        
+		 end    
+		 
+		 it "should not allow access to the new page" do
+		 	@user=Factory(:user)
+		 	test_sign_in(@user)
+		 	post :create, :user=>@attr
+		 	response.should redirect_to root_path
+		 end      
 
     end
     
