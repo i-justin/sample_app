@@ -2,12 +2,19 @@
 	<tr>
 	    <td class="main">
 	       <h1><%=gravatar_for @user%><%=@user.name%></h1>
+	       <% if @microposts.any? %>
+	       <table class="microposts" summary="User microposts">
+	       	<%=render @microposts%>
+	       </table>
+	       <%=will_paginate @microposts%>
+	       <%end%>
 	    </td>
 	    <td class="sidebar round">
-	    	<strong>Name</strong><%=@user.name%><br/>
-	    	<strong>URL</strong><%=link_to user_path(@user), @user%>
+	    	<strong>Name</strong> <%=@user.name%><br/>
+	    	<strong>URL</strong> <%=link_to user_path(@user), @user%><Br/>
+	    	<strong>Posts</strong> <%=@user.microposts.count%>
 	    </td>
 	</tr>
 </table>
 
-, <%=@user.email%>
+<%=@user.email%>
