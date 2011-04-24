@@ -46,6 +46,10 @@ module SessionsHelper
    	session[:return_to]=nil
    end
    
+   def authenticate
+  		deny_access unless signed_in?
+   end
+   
    private
    
    	def user_from_remember_token
