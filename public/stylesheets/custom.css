@@ -206,7 +206,7 @@ table.microposts tr td.gravatar{
 table.microposts tr td.micropost {
 	border-top: 1px solid #ccc;
 	vertical-align: top;
-	width: 10px;	
+	width: 500px;	
 }
 
 table.microposts tr td.micropost span.timestamp {
@@ -238,4 +238,8 @@ form.new_micropost {
 form.new_micropost textarea {
 	height: 4em;
 	margin-bottom: 0;
+}
+
+td micropost {
+	width:500px;
 }
